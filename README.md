@@ -1,4 +1,4 @@
-# Equipo1-TP-Algebra
+# Equipo1-TPAlgebra
 
 Equipo 1
 Ignacio Otegui - Jaggerlade - nachootegui@hotmail.com
