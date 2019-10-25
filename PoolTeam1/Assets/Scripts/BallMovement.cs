@@ -5,6 +5,8 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     public float speed = 2;
+    public bool movementIsOn = false;
+    public float radius;
     void Start()
     {
         
@@ -13,9 +15,22 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.Translate(Vector2.up * speed* Time.deltaTime);
+            movementIsOn = !movementIsOn;
         }
+
+        if (movementIsOn)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+
+       
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

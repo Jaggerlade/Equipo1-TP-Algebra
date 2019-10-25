@@ -17,7 +17,8 @@ public class Sticks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = (Vector2)cam.ScreenToWorldPoint(Input.mousePosition);
+        //transform.position = (mousePos);
         
 
     }
