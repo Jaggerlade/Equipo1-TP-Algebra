@@ -1,0 +1,3 @@
+- Ignacio, tu codigo para que el palo siga al mouse no funciona por que la cámara del 
+  juego está configurada en perspectiva 3d, esto es xq crearon el proyecto en 3D. Pasen la cámara a ortografica.
+- El sprite del palo tiene muchos pixeles transparentes y está descentrado. modifiquenlo en photoshop
