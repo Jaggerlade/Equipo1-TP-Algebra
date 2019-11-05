@@ -4,33 +4,45 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    public float speed = 2;
-    public bool movementIsOn = false;
-    public float radius;
+    public float mass;
+    public float gravity;
+    public float force;
+    public float coefOfFriction;
+
+    float force2;
+    float Fr;
+
     void Start()
     {
-        
+        force2 = 0;
+        Fr = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            movementIsOn = !movementIsOn;
+            force2 = force;
         }
 
-        if (movementIsOn)
+        //transform.Translate(Vector2.up * force2 * Time.deltaTime);
+
+        if (force2 >= 0)
         {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-        }
+            transform.Translate(Vector2.up * force2 * Time.deltaTime);
 
-       
+            force2 = force2 - CalculateFriction();
+            //Debug.Log(CalculateFriction());
+
+        }
     }
 
-    private void OnDrawGizmos()
+    float CalculateFriction()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        float N = mass * gravity;
+
+        Fr = (coefOfFriction * N) * 0.01f;
+
+        return Fr;
     }
 }
