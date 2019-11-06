@@ -5,43 +5,48 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     public float mass;
-    public float gravity;
-    public float force;
     public float coefOfFriction;
+    public float gravity;
 
-    float force2;
-    float Fr;
+    float aceleration;
+    float force;
+    float time;
 
     void Start()
     {
-        force2 = 0;
-        Fr = 0;
+        aceleration = 0.0f;
+        force = 0.0f;
+        time = 0.0f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            force2 = force;
+            time += Time.deltaTime * 3;
         }
 
-        //transform.Translate(Vector2.up * force2 * Time.deltaTime);
-
-        if (force2 >= 0)
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            transform.Translate(Vector2.up * force2 * Time.deltaTime);
+            aceleration = time;
+            force = mass * aceleration;
+            time = 0.0f;
+        }
 
-            force2 = force2 - CalculateFriction();
-            //Debug.Log(CalculateFriction());
+        if (force >= 0.0f)
+        {
+            transform.Translate(Vector2.up * force * Time.deltaTime);
 
+            force -= CalculateFriction();
         }
     }
 
     float CalculateFriction()
     {
-        float N = mass * gravity;
+        float Fr = 0.0f;
+        float NormalF = mass * gravity;
 
-        Fr = (coefOfFriction * N) * 0.01f;
+        Fr = (coefOfFriction * NormalF) * Time.deltaTime;
 
         return Fr;
     }
