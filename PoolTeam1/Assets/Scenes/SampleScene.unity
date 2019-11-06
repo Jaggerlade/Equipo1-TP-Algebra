@@ -465,10 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8bb64266870e741aaf08534e5812fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 10
+  mass: 3
+  aceleration: 3
+  coefOfFriction: 0.15
   gravity: 9.8
-  force: 10
-  coefOfFriction: 0.2
 --- !u!212 &1061550265
 SpriteRenderer:
   m_ObjectHideFlags: 0
