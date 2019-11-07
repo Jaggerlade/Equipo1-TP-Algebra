@@ -1,0 +1,33 @@
+Struct Bola{
+Vector2 Position;
+Vector2 Direction;
+Vector2 Speed;
+float Radius;
+}
+int distancia;
+Bola bola1;
+Bola bola2;
+Momento de colision:
+if(distancia<=bola1.Radio+bola2.Radio){
+		
+}
+Resultado de una colision en teoria:
+
+vo=Velocidad Original
+vf=Velocidad Final
+m=Masa
+
+m1vo1+m2.vo2 = m1.vf1+m2.vf2
+Las masas de las bolas son iguales, por lo que se eliminan.
+vo1+vo2 = vf1+vf2
+Las velocidades en X e Y de la velocidad final se pueden calcular de la siguiente manera
+(Para este ejemplo alfa sera el angulo de salida de bola1 y beta de bola2):
+bola1.Speed.x=(vf cos α)
+bola1.Speed.y=(vf sen α)
+bola2.Speed.x=(vf cos β)
+bola2.Speed.y=(vf sen β)
+Reemplazando
+vo1+vo2 = [(vf1 cos α)+(vf1 sen α)]+ [(vf2 cos β)+(vf2 sen β)]
+Para calcular α y β
+α = tan¹√[(vf1 sen α)²+(vf1 cos α)²]
+β = tan¹√[(vf2 sen α)²+(vf2 cos α)²]
