@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balls : MonoBehaviour
 {
-    public float ratio;
+    
     [HideInInspector] public BallMovement ballMovement;
     void Start()
     {
@@ -17,9 +17,5 @@ public class Balls : MonoBehaviour
     {
         
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, ratio);
-    }
+    
 }

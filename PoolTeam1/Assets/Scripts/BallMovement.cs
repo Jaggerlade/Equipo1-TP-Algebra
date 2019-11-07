@@ -12,6 +12,8 @@ public class BallMovement : MonoBehaviour
     float force;
     float time;
 
+    public float radius;
+
     void Start()
     {
         aceleration = 0.0f;
@@ -49,5 +51,10 @@ public class BallMovement : MonoBehaviour
         Fr = (coefOfFriction * NormalF) * Time.deltaTime;
 
         return Fr;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
