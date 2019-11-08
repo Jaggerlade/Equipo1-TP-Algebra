@@ -12,12 +12,10 @@ public class BallMovement : MonoBehaviour
     float aceleration;
     float force;
     float time;
-    /*
-    float radius;
     Vector3 Speed;
     Vector3 mouseClickPoint;
     Vector3 ballDirection;
-    */
+
     public float radius;
 
     void Start(){
@@ -31,6 +29,7 @@ public class BallMovement : MonoBehaviour
             /*
             La acumulacion no deberia ser infinita. Tal vez poner if(time<=10.0)?
             Para poder hacer que la direccion de la pelota sea en base a donde se clickeo:
+
             mouseClickPoint=mouse.transform.position;
             ballDirection=ballPosition-mouseClickPoint;
             */
@@ -40,16 +39,9 @@ public class BallMovement : MonoBehaviour
             force = mass * aceleration;
             time = 0.0f;
         }
-<<<<<<< HEAD
-
-        if (force >= 0.0f)
-        {
-            transform.Translate(Vector2.up * force * Time.deltaTime);
-            
-=======
         if (force >= 0.0f){
             transform.Translate(Vector2.up /*Sacar Vector2.up y poner ballDirection*/ * force * Time.deltaTime);
->>>>>>> 5f8b89c8f48a6bcbd757f27c77e978d3956f565a
+
             force -= CalculateFriction();
         }
     }
