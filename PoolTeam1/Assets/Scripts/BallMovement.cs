@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class BallMovement : MonoBehaviour
@@ -12,9 +10,11 @@ public class BallMovement : MonoBehaviour
     float aceleration;
     float force;
     float time;
-    Vector3 Speed;
-    Vector3 mouseClickPoint;
-    Vector3 ballDirection;
+    float speed;
+    
+    Vector3 launchDirection;
+
+    public GameObject blanca;
 
     public float radius;
 
@@ -22,17 +22,17 @@ public class BallMovement : MonoBehaviour
         aceleration = 0.0f;
         force = 0.0f;
         time = 0.0f;
+        launchDirection = Vector3.zero;
     }
     void FixedUpdate(){
+
         if (Input.GetKey(KeyCode.Mouse0)){
             time += Time.deltaTime * 3;
             /*
             La acumulacion no deberia ser infinita. Tal vez poner if(time<=10.0)?
             Para poder hacer que la direccion de la pelota sea en base a donde se clickeo:
-
-            mouseClickPoint=mouse.transform.position;
-            ballDirection=ballPosition-mouseClickPoint;
             */
+            launchDirection = blanca.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         if (Input.GetKeyUp(KeyCode.Mouse0)){
             aceleration = time;
@@ -40,7 +40,8 @@ public class BallMovement : MonoBehaviour
             time = 0.0f;
         }
         if (force >= 0.0f){
-            transform.Translate(Vector2.up /*Sacar Vector2.up y poner ballDirection*/ * force * Time.deltaTime);
+
+            transform.Translate(launchDirection * force * Time.deltaTime);
 
             force -= CalculateFriction();
         }
