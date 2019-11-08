@@ -38,7 +38,7 @@ public class BallMovement : MonoBehaviour
         if (force >= 0.0f)
         {
             transform.Translate(Vector2.up * force * Time.deltaTime);
-
+            
             force -= CalculateFriction();
         }
     }
