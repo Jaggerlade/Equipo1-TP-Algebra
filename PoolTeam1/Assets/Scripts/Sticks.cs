@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Sticks : MonoBehaviour
 {
+    int speed = 15;
     public Camera cam;
-    Vector2 mousePos;
+    [HideInInspector] public Vector2 mousePos;
+
     private float Offset = 0;
+    GameObject blanca;
     
 
     void Start()
     {
+       blanca = GameObject.FindGameObjectWithTag("Blanca");
+        FindObjectOfType<Balls>();
         transform.position = new Vector3(transform.position.x, transform.position.y, Offset);
     }
 
@@ -19,12 +24,18 @@ public class Sticks : MonoBehaviour
     {
         mousePos = (Vector2)cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = (mousePos);
-        //transform.position = (mousePos);
-        
-
+        LookAtWhiteBall();
     }
     private void FixedUpdate()
     {
         
+    }
+
+    void LookAtWhiteBall()
+    {
+        Vector2 blancaDirection = blanca.transform.position - transform.position;
+        float angle = Mathf.Atan2(blancaDirection.y, blancaDirection.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation,speed * Time.deltaTime);
     }
 }

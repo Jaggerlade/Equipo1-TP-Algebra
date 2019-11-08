@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BallMovement : MonoBehaviour
 {
     public float mass;
@@ -14,8 +15,11 @@ public class BallMovement : MonoBehaviour
 
     public float radius;
 
+    
+
     void Start()
     {
+        
         aceleration = 0.0f;
         force = 0.0f;
         time = 0.0f;
@@ -27,14 +31,14 @@ public class BallMovement : MonoBehaviour
         {
             time += Time.deltaTime * 3;
         }
-
+        
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             aceleration = time;
             force = mass * aceleration;
             time = 0.0f;
         }
-
+       
         if (force >= 0.0f)
         {
             transform.Translate(Vector2.up * force * Time.deltaTime);
@@ -57,4 +61,5 @@ public class BallMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
+   
 }
