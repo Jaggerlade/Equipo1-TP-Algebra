@@ -10,7 +10,7 @@ public class CollisionManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-       
+
     }
 
     // Update is called once per frame
@@ -20,10 +20,12 @@ public class CollisionManager : MonoBehaviour
         {
             for (int j = 0; j < balls.Count; j++)
             {
-                if (balls[i] = balls[j]){
+                if (balls[i] = balls[j])
+                {
                     return;
                 }
-                else{
+                else
+                {
                     /*
                     if (balls[i].ballMovement.transform.position - balls[j].ballMovement.transform.position
                         <= balls[i].radius+balls[j].radius){
@@ -37,13 +39,8 @@ public class CollisionManager : MonoBehaviour
                         ball[i].Direction.y = (ball[i].Speed.x*Mathf.Cos(angulo1));
                     
                         */
-                    }
-                
                 }
             }
         }
-       
-
-     
     }
 }

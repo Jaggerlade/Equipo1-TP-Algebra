@@ -1,8 +1,8 @@
 
-=== Tue Oct 22 22:56:02 2019
+=== Fri Nov  8 12:10:58 2019
 
 Packages were changed.
-Update Mode: mergeDefaultDependencies
+Update Mode: resetToDefaultDependencies
 
 The following packages were added:
   com.unity.analytics@3.2.2
@@ -41,11 +41,3 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
-
-=== Thu Nov  7 22:06:04 2019
-
-Packages were changed.
-Update Mode: updateDependencies
-
-The following packages were updated:
-  com.unity.package-manager-ui from version 2.0.3 to 2.0.7
