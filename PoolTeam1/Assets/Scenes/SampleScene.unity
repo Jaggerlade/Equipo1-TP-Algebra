@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 534669904}
+  mousePos: {x: 0, y: 0}
 --- !u!1 &1061550263
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +447,6 @@ GameObject:
   - component: {fileID: 1061550266}
   - component: {fileID: 1061550265}
   - component: {fileID: 1061550264}
-  - component: {fileID: 1061550267}
   m_Layer: 0
   m_Name: ball 1
   m_TagString: Blanca
@@ -469,6 +469,7 @@ MonoBehaviour:
   mass: 3
   coefOfFriction: 0.15
   gravity: 9.8
+  blanca: {fileID: 1061550263}
   radius: 0.5
 --- !u!212 &1061550265
 SpriteRenderer:
@@ -533,19 +534,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1061550267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061550263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a395a6c03c60b43ab921a0950648c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballMovement: {fileID: 0}
 --- !u!1 &1292577914
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,8 +564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balls:
-  - {fileID: 1061550267}
-  - {fileID: 1751319892}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1292577916
 Transform:
   m_ObjectHideFlags: 0
@@ -602,7 +590,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1751319891}
   - component: {fileID: 1751319890}
-  - component: {fileID: 1751319892}
   m_Layer: 0
   m_Name: ball 2
   m_TagString: Untagged
@@ -672,16 +659,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 2, z: 0}
---- !u!114 &1751319892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751319889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a395a6c03c60b43ab921a0950648c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballMovement: {fileID: 0}
