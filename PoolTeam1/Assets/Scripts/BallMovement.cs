@@ -30,6 +30,10 @@ public class BallMovement : MonoBehaviour
             case Balls.Tipo.blanca:
                 PushBall();
                 ApplyFriction();
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    transform.position = Vector3.zero;
+                }
                 break;
             case Balls.Tipo.lisa:
                 ApplyFriction();
