@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -8000
   m_Sprite: {fileID: 21300000, guid: 3f5342f21ae57cc4ebd3a6c5160d1031, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -463,14 +463,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1061550263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8bb64266870e741aaf08534e5812fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 21a395a6c03c60b43ab921a0950648c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 3
-  coefOfFriction: 0.15
-  gravity: 9.8
-  blanca: {fileID: 1061550263}
-  radius: 0.5
+  tipo: 0
+  ballMovement: {fileID: 0}
 --- !u!212 &1061550265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -528,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 1061550263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.13, y: -1.34, z: 0}
-  m_LocalScale: {x: 0.68477994, y: 0.69386995, z: 1.01}
+  m_LocalScale: {x: 0.68477994, y: 0.69386995, z: 1}
   m_Children:
   - {fileID: 789174200}
   m_Father: {fileID: 0}
@@ -563,9 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a3120a379fd0746993a7f9083c3b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balls:
-  - {fileID: 0}
-  - {fileID: 0}
+  balls: []
 --- !u!4 &1292577916
 Transform:
   m_ObjectHideFlags: 0
@@ -590,6 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751319891}
   - component: {fileID: 1751319890}
+  - component: {fileID: 1751319892}
   m_Layer: 0
   m_Name: ball 2
   m_TagString: Untagged
@@ -659,3 +655,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 2, z: 0}
+--- !u!114 &1751319892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751319889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a395a6c03c60b43ab921a0950648c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  ballMovement: {fileID: 0}

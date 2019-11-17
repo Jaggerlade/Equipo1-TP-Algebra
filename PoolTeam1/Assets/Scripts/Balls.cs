@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Balls : MonoBehaviour
 {
-    
+    public enum Tipo
+    {
+        blanca,
+        lisa,
+        rayada,
+    }
+    public Tipo tipo;
     [HideInInspector] public BallMovement ballMovement;
     void Start()
     {
-        ballMovement = gameObject.AddComponent<BallMovement>(); 
+        ballMovement = gameObject.AddComponent<BallMovement>();
+        ballMovement.tipo = tipo;
         CollisionManager.instance.balls.Add(this);
     }
-
     // Update is called once per frame
     void Update()
     {

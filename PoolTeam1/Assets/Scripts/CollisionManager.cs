@@ -7,14 +7,20 @@ public class CollisionManager : MonoBehaviour
 {
     public static CollisionManager instance;
     public List<Balls> balls = new List<Balls>();
-    void Awake()
-    {
-        instance = this;
 
+    const float rightAngle = 90.0f;
+
+    void Awake(){
+        instance = this;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
+    {
+        ApplyCollisions();
+    }
+
+    void ApplyCollisions()
     {
         for (int i = 0; i < balls.Count; i++)
         {
@@ -26,19 +32,21 @@ public class CollisionManager : MonoBehaviour
                 }
                 else
                 {
-                    /*
-                    if (balls[i].ballMovement.transform.position - balls[j].ballMovement.transform.position
-                        <= balls[i].radius+balls[j].radius){
-                        balls[j].Direction = balls[j].transformation.position-balls[i].transformation.position;
-                        float prodEscalar = (balls[i].Speed.x+balls[j].Speed.x)*(balls[i].Speed.y+balls[j].Speed.y);
-                        float angulo1 = Mathf.Acos(prodEscalar/(Mathf.Sqrt((Mathf.Pow(balls[i].Speed.x,2)+(Mathf.Pow(balls[i].Speed.y,2)*(Mathf.Pow(balls[j].Speed.x,2)+(Mathf.Pow(balls[j].Speed.y,2));
-                        ball[j].Direction.x = (ball[j].Speed.x*Mathf.Cos(angulo1));
-                        ball[j].Direction.y = (ball[j].Speed.x*Mathf.Cos(angulo1));
-                        float angulo2 = 90.0-angulo1;
-                        ball[i].Direction.x = (ball[i].Speed.x*Mathf.Cos(angulo1));
-                        ball[i].Direction.y = (ball[i].Speed.x*Mathf.Cos(angulo1));
-                    
-                        */
+                    if (Vector3.Distance(balls[i].ballMovement.transform.position, balls[j].ballMovement.transform.position)
+                        <= balls[i].ballMovement.radius + balls[j].ballMovement.radius)
+                    {
+                        Debug.Log("Hola :D");
+                        balls[j].ballMovement.launchDirection = balls[j].transform.position - balls[i].transform.position;
+                        float prodEscalar = (balls[i].ballMovement.launchDirection.x + balls[j].ballMovement.launchDirection.x) * (balls[i].ballMovement.launchDirection.y + balls[j].ballMovement.launchDirection.y);
+                        float impactedExitAngle = Mathf.Acos(prodEscalar / (Mathf.Sqrt((Mathf.Pow(balls[i].ballMovement.launchDirection.x, 2)
+                            + (Mathf.Pow(balls[i].ballMovement.launchDirection.y, 2) * (Mathf.Pow(balls[j].ballMovement.launchDirection.x, 2)
+                            + (Mathf.Pow(balls[j].ballMovement.launchDirection.y, 2))))))));
+                        balls[j].ballMovement.launchDirection.x = (balls[j].ballMovement.launchDirection.x * Mathf.Cos(impactedExitAngle));
+                        balls[j].ballMovement.launchDirection.y = (balls[j].ballMovement.launchDirection.x * Mathf.Cos(impactedExitAngle));
+                        float impactingExitAngle = rightAngle - impactedExitAngle;
+                        balls[i].ballMovement.launchDirection.x = (balls[i].ballMovement.launchDirection.x * Mathf.Cos(impactingExitAngle));
+                        balls[i].ballMovement.launchDirection.y = (balls[i].ballMovement.launchDirection.x * Mathf.Cos(impactingExitAngle));
+                    }
                 }
             }
         }

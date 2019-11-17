@@ -8,7 +8,7 @@ public class Sticks : MonoBehaviour
     public Camera cam;
     [HideInInspector] public Vector2 mousePos;
 
-    private float Offset = 0;
+    private float Offset = 5;
     GameObject blanca;
     
 
