@@ -9,8 +9,8 @@ public class BallMovement : MonoBehaviour
     public float gravity = 9.8f;
     public float radius = 0.5f;
 
+    public float force;
     float aceleration;
-    float force;
     float time;
     float speed;
 
@@ -45,15 +45,6 @@ public class BallMovement : MonoBehaviour
                 break;
         }
     }
-    float CalculateFriction()
-    {
-        float Fr = 0.0f;
-        float NormalF = mass * gravity;
-
-        Fr = (coefOfFriction * NormalF) * Time.deltaTime;
-
-        return Fr;
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -75,6 +66,15 @@ public class BallMovement : MonoBehaviour
             force = mass * aceleration;
             time = 0.0f;
         }
+    }
+    float CalculateFriction()
+    {
+        float Fr = 0.0f;
+        float NormalF = mass * gravity;
+
+        Fr = (coefOfFriction * NormalF) * Time.deltaTime;
+
+        return Fr;
     }
     void ApplyFriction()
     {
