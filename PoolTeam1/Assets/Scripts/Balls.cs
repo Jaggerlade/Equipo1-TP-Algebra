@@ -18,10 +18,10 @@ public class Balls : MonoBehaviour
         ballMovement.tipo = tipo;
         CollisionManager.instance.balls.Add(this);
     }
-    // Update is called once per frame
+
     void Update()
     {
-        
+
     }
-    
+
 }

@@ -63,12 +63,11 @@ public class BallMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            time += Time.deltaTime * 3;
-            /*
-            La acumulacion no deberia ser infinita. Tal vez poner if(time<=10.0)?
-            Para poder hacer que la direccion de la pelota sea en base a donde se clickeo:
-            */
-            launchDirection = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (time <= 4)
+            {
+                time += Time.deltaTime * 3;
+                launchDirection = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {

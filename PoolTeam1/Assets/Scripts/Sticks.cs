@@ -10,16 +10,14 @@ public class Sticks : MonoBehaviour
 
     private float Offset = 5;
     GameObject blanca;
-    
 
     void Start()
     {
-       blanca = GameObject.FindGameObjectWithTag("Blanca");
+        blanca = GameObject.FindGameObjectWithTag("Blanca");
         FindObjectOfType<Balls>();
         transform.position = new Vector3(transform.position.x, transform.position.y, Offset);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         mousePos = (Vector2)cam.ScreenToWorldPoint(Input.mousePosition);
@@ -29,16 +27,12 @@ public class Sticks : MonoBehaviour
         transform.position = (Vector2)blanca.transform.position;
         LookAtWhiteBall();
     }
-    private void FixedUpdate()
-    {
-        
-    }
 
     void LookAtWhiteBall()
     {
         Vector2 blancaDirection = (Vector2)blanca.transform.position - mousePos;
         float angle = Mathf.Atan2(blancaDirection.y, blancaDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation,speed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
     }
 }
