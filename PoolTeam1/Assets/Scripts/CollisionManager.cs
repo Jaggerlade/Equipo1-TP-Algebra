@@ -6,6 +6,7 @@ public class CollisionManager : MonoBehaviour
 {
     public static CollisionManager instance;
     public List<Balls> balls = new List<Balls>();
+    public List<Walls> walls = new List<Walls>();
 
     const float rightAngle = 90.0f;
 
