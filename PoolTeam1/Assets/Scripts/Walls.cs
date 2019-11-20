@@ -15,7 +15,7 @@ public class Walls : MonoBehaviour
 
     void Start()
     {
-        CollisionManager.instance.walls.Add(this);
+        CollisionManager_BallWithWall.instance.walls.Add(this);
     }
     
     void Update()

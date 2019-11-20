@@ -17,7 +17,8 @@ public class Balls : MonoBehaviour
         ballMovement = gameObject.AddComponent<BallMovement>();
         ballMovement.tipo = tipo;
 
-        CollisionManager.instance.balls.Add(this);
+        CollisionManager_BallWithBall.instance.balls.Add(this);
+        CollisionManager_BallWithWall.instance.balls.Add(this);
     }
 
     void Update()
