@@ -30,9 +30,9 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                     case Walls.Type.Left:
                         if (balls[i].transform.position.x - balls[i].ballMovement.radius <= walls[j].transform.position.x)
                         {
-                            translateOnX = (walls[j].transform.position.x - balls[i].ballMovement.radius) - balls[i].transform.position.x;
+                            /*translateOnX = (walls[j].transform.position.x - balls[i].ballMovement.radius) - balls[i].transform.position.x;
                             translateOnY = (translateOnX / balls[i].ballMovement.launchDirection.x) * balls[i].ballMovement.launchDirection.y;
-                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);
+                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.x *= -1;
                         }
@@ -40,9 +40,9 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                     case Walls.Type.Right:
                         if (balls[i].transform.position.x + balls[i].ballMovement.radius >= walls[j].transform.position.x)
                         {
-                            translateOnX = balls[i].transform.position.x - (walls[j].transform.position.x - balls[i].ballMovement.radius);
+                            /*translateOnX = balls[i].transform.position.x - (walls[j].transform.position.x - balls[i].ballMovement.radius);
                             translateOnY = (translateOnX / balls[i].ballMovement.launchDirection.x) * balls[i].ballMovement.launchDirection.y;
-                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);
+                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.x *= -1;
                         }
@@ -50,9 +50,9 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                     case Walls.Type.Upper:
                         if (balls[i].transform.position.y + balls[i].ballMovement.radius >= walls[j].transform.position.y && collisionUpperWall == false)
                         {
-                            translateOnY = balls[i].transform.position.y - (walls[j].transform.position.y - balls[i].ballMovement.radius);
+                            /*translateOnY = balls[i].transform.position.y - (walls[j].transform.position.y - balls[i].ballMovement.radius);
                             translateOnX = (translateOnX / balls[i].ballMovement.launchDirection.y) * balls[i].ballMovement.launchDirection.x;
-                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);
+                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.y *= -1;
                             collisionUpperWall = true;
@@ -61,9 +61,9 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                     case Walls.Type.Bottom:
                         if (balls[i].transform.position.y - balls[i].ballMovement.radius <= walls[j].transform.position.y && collisionBottomWall == false)
                         {
-                            translateOnY = (walls[j].transform.position.y - balls[i].ballMovement.radius) - balls[i].transform.position.y;
+                            /*translateOnY = (walls[j].transform.position.y - balls[i].ballMovement.radius) - balls[i].transform.position.y;
                             translateOnX = (translateOnX / balls[i].ballMovement.launchDirection.y) * balls[i].ballMovement.launchDirection.x;
-                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);
+                            balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.y *= -1;
                             collisionBottomWall = true;
