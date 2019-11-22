@@ -10,6 +10,7 @@ public class Sticks : MonoBehaviour
 
     private float Offset = 5;
     GameObject blanca;
+    Vector2 distance;
 
     void Start()
     {
@@ -21,11 +22,17 @@ public class Sticks : MonoBehaviour
     void Update()
     {
         mousePos = (Vector2)cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 a = ((Vector2)blanca.transform.position - mousePos);
-        a.Normalize();
-        a *= 2;
+        distance = ((Vector2)blanca.transform.position - mousePos);
+        distance.Normalize();
+        distance *= 1;
         transform.position = (Vector2)blanca.transform.position;
         LookAtWhiteBall();
+        if(Input.GetKey(KeyCode.Mouse0))
+        {
+            distance *= 2;
+           
+        }
+        transform.position = (Vector2)blanca.transform.position - distance;
     }
 
     void LookAtWhiteBall()
