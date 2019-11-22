@@ -8,12 +8,14 @@ public class CollisionManager_BallWithWall : MonoBehaviour
     public List<Balls> balls = new List<Balls>();
     public List<Walls> walls = new List<Walls>();
 
+    bool collisionUpperWall = false;
+    bool collisionBottomWall = false;
+
     void Awake()
     {
         instance = this;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         for (int i = 0; i < balls.Count; i++)
@@ -23,35 +25,37 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                 switch (walls[j].type)
                 {
                     case Walls.Type.Left:
-                        if (balls[i].transform.position.x + balls[i].ballMovement.radius >= walls[j].transform.position.x)
-                        {
-                            balls[i].ballMovement.launchDirection.x *= -1;
-                        }
-                        break;
-                    case Walls.Type.Right:
                         if (balls[i].transform.position.x - balls[i].ballMovement.radius <= walls[j].transform.position.x)
                         {
                             balls[i].ballMovement.launchDirection.x *= -1;
                         }
                         break;
+                    case Walls.Type.Right:
+                        if (balls[i].transform.position.x + balls[i].ballMovement.radius >= walls[j].transform.position.x)
+                        {
+                            balls[i].ballMovement.launchDirection.x *= -1;
+                        }
+                        break;
                     case Walls.Type.Upper:
-                        if (balls[i].transform.position.y >= walls[j].transform.position.y)
+                        if (balls[i].transform.position.y >= walls[j].transform.position.y && collisionUpperWall == false)
                         {
                             balls[i].ballMovement.launchDirection.y *= -1;
-                            Debug.Log("Colision");
+                            collisionUpperWall = true;
                         }
                         break;
                     case Walls.Type.Bottom:
-                        if (balls[i].transform.position.y <= walls[j].transform.position.y)
+                        if (balls[i].transform.position.y <= walls[j].transform.position.y && collisionBottomWall == false)
                         {
                             balls[i].ballMovement.launchDirection.y *= -1;
-                            Debug.Log("Colision");
+                            collisionBottomWall = true;
                         }
                         break;
                 }
             }
 
-            Debug.Log(balls[1].ballMovement.launchDirection);
+            collisionUpperWall = false;
+            collisionBottomWall = false;
         }
     } 
 }
+ 
