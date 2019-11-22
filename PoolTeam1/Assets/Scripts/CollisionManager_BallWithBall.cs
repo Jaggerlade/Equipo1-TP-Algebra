@@ -7,6 +7,8 @@ public class CollisionManager_BallWithBall : MonoBehaviour
     public static CollisionManager_BallWithBall instance;
     public List<Balls> balls = new List<Balls>();
 
+    bool isInCollsion;
+
     const float rightAngle = 90.0f;
 
     void Awake()
@@ -14,7 +16,11 @@ public class CollisionManager_BallWithBall : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        isInCollsion = false;
+    }
+    
     void FixedUpdate()
     {
         ApplyCollisions();
@@ -29,7 +35,13 @@ public class CollisionManager_BallWithBall : MonoBehaviour
                 if (balls[i] != balls[j])
                 {
                     if (Vector3.Distance(balls[i].ballMovement.transform.position, balls[j].ballMovement.transform.position)
-                        <= balls[i].ballMovement.radius + balls[j].ballMovement.radius)
+                        > balls[i].ballMovement.radius + balls[j].ballMovement.radius)
+                    {
+                        isInCollsion = false;
+                    }
+
+                    if (Vector3.Distance(balls[i].ballMovement.transform.position, balls[j].ballMovement.transform.position)
+                    <= balls[i].ballMovement.radius + balls[j].ballMovement.radius && !isInCollsion)
                     {
                         //bola impactante
                         balls[i].ballMovement.launchDirection = balls[i].transform.position - balls[j].transform.position;
@@ -41,6 +53,8 @@ public class CollisionManager_BallWithBall : MonoBehaviour
                         balls[j].ballMovement.force = balls[j].ballMovement.force + balls[i].ballMovement.force;
                         balls[j].ballMovement.launchDirection = (balls[i].ballMovement.launchDirection * Mathf.Cos(impactingExitAngle));
                         //break;
+
+                        isInCollsion = true;
                         return;
                     }
                 }
