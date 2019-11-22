@@ -41,6 +41,9 @@ public class BallMovement : MonoBehaviour
             case Balls.Tipo.rayada:
                 ApplyFriction();
                 break;
+            case Balls.Tipo.negra:
+                ApplyFriction();
+                break;
             default:
                 break;
         }

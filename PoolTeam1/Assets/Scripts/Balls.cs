@@ -9,6 +9,7 @@ public class Balls : MonoBehaviour
         blanca,
         lisa,
         rayada,
+        negra
     }
     public Tipo tipo;
     [HideInInspector] public BallMovement ballMovement;
