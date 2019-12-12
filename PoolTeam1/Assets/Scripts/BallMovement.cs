@@ -4,6 +4,8 @@
 public class BallMovement : MonoBehaviour
 {
     public Balls.Tipo tipo;
+    public Balls.NombreColic nombre;
+    public Balls.NombreColic ultimaColic;
     public float mass = 3.0f;
     public float coefOfFriction = 0.15f;
     public float gravity = 9.8f;
@@ -23,6 +25,7 @@ public class BallMovement : MonoBehaviour
         time = 0.0f;
         launchDirection = Vector2.zero;
     }
+
     void FixedUpdate()
     {
         switch (tipo)
@@ -44,15 +47,15 @@ public class BallMovement : MonoBehaviour
             case Balls.Tipo.negra:
                 ApplyFriction();
                 break;
-            default:
-                break;
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
+
     void PushBall()
     {
         if (Input.GetKey(KeyCode.Mouse0))
@@ -70,6 +73,7 @@ public class BallMovement : MonoBehaviour
             time = 0.0f;
         }
     }
+
     float CalculateFriction()
     {
         float Fr = 0.0f;
@@ -79,13 +83,22 @@ public class BallMovement : MonoBehaviour
 
         return Fr;
     }
+
     void ApplyFriction()
     {
         if (force >= 0.0f)
         {
             transform.Translate(launchDirection * force * Time.deltaTime);
-
             force -= CalculateFriction();
+        }
+        else
+        {
+            ultimaColic = nombre; // para restablecer las ultimas coliciones de las pelotas
+
+            if (tipo != Balls.Tipo.blanca) //para limpiar la direccion de las pelotas que no son blancas
+            {
+                launchDirection = Vector2.zero;
+            }
         }
     }
 }

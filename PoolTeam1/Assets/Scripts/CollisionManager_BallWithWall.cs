@@ -11,8 +11,8 @@ public class CollisionManager_BallWithWall : MonoBehaviour
     bool collisionUpperWall = false;
     bool collisionBottomWall = false;
 
-    float translateOnX;
-    float translateOnY;
+    //float translateOnX;
+    //float translateOnY;
 
     void Awake()
     {
@@ -35,6 +35,7 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                             balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.x *= -1;
+                            balls[i].ballMovement.ultimaColic = Balls.NombreColic.walls;
                         }
                         break;
                     case Walls.Type.Right:
@@ -45,6 +46,7 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                             balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.x *= -1;
+                            balls[i].ballMovement.ultimaColic = Balls.NombreColic.walls;
                         }
                         break;
                     case Walls.Type.Upper:
@@ -55,6 +57,7 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                             balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.y *= -1;
+                            balls[i].ballMovement.ultimaColic = Balls.NombreColic.walls;
                             collisionUpperWall = true;
                         }
                         break;
@@ -66,6 +69,7 @@ public class CollisionManager_BallWithWall : MonoBehaviour
                             balls[i].transform.Translate(-translateOnX, -translateOnY, 0);*/
 
                             balls[i].ballMovement.launchDirection.y *= -1;
+                            balls[i].ballMovement.ultimaColic = Balls.NombreColic.walls;
                             collisionBottomWall = true;
                         }
                         break;
