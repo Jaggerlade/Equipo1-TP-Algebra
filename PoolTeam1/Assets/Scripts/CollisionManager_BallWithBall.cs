@@ -29,7 +29,7 @@ public class CollisionManager_BallWithBall : MonoBehaviour
                 if (balls[i] != balls[j])
                 {
                     if (Vector3.Distance(balls[i].ballMovement.transform.position, balls[j].ballMovement.transform.position)
-                    <= balls[i].ballMovement.radius + balls[j].ballMovement.radius && balls[i].ballMovement.ultimaColic != balls[j].ballMovement.ultimaColic)
+                    <= balls[i].ballMovement.radius + balls[j].ballMovement.radius && balls[j].ballMovement.ultimaColic != balls[i].ballMovement.nombre)
                     {
                         //bola impactante
                         balls[i].ballMovement.launchDirection = balls[i].transform.position - balls[j].transform.position;
@@ -38,6 +38,13 @@ public class CollisionManager_BallWithBall : MonoBehaviour
 
                         //bola impactada
                         float impactingExitAngle = rightAngle - prodEscalar;
+
+                        //fuerza a que si las pelotas consiguen una furza superior a la maxima posible se ajusten automaticamente
+                        if(balls[i].ballMovement.force > 11)
+                            balls[i].ballMovement.force = 11;
+                        if (balls[j].ballMovement.force > 11)
+                            balls[j].ballMovement.force = 11;
+
                         balls[j].ballMovement.force = balls[j].ballMovement.force + balls[i].ballMovement.force;
                         balls[j].ballMovement.launchDirection = (balls[i].ballMovement.launchDirection * Mathf.Cos(impactingExitAngle));
 
@@ -47,10 +54,9 @@ public class CollisionManager_BallWithBall : MonoBehaviour
                         //detiene el programa cuando colisiona
                         //Debug.Log(balls[j].ballMovement.launchDirection);
                         //Debug.Break();
-                        //
                         //Invoke( "ClearConsole", 1.0f );
 
-                        return;
+                        //return;
                     }
                 }
             }
